@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Fogz:</strong>
+  <%= @big_time_entry.Fogz %>
+</p>
+
+<p>
+  <strong>Resource:</strong>
+  <%= @big_time_entry.Resource %>
+</p>
+
+<p>
+  <strong>Hrsin:</strong>
+  <%= @big_time_entry.HrsIn %>
+</p>
+
+<p>
+  <strong>Workdate:</strong>
+  <%= @big_time_entry.WorkDate %>
+</p>
+
+<p>
+  <strong>Nt:</strong>
+  <%= @big_time_entry.nt %>
+</p>
+
+<%= link_to 'Edit', edit_big_time_entry_path(@big_time_entry) %> |
+<%= link_to 'Back', big_time_entries_path %>

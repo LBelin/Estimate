@@ -1,0 +1,33 @@
+<h1>Listing big_time_entries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Fogz</th>
+      <th>Resource</th>
+      <th>Hrsin</th>
+      <th>Workdate</th>
+      <th>Nt</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @big_time_entries.each do |big_time_entry| %>
+      <tr>
+        <td><%= big_time_entry.Fogz %></td>
+        <td><%= big_time_entry.Resource %></td>
+        <td><%= big_time_entry.HrsIn %></td>
+        <td><%= big_time_entry.WorkDate %></td>
+        <td><%= big_time_entry.nt %></td>
+        <td><%= link_to 'Show', big_time_entry %></td>
+        <td><%= link_to 'Edit', edit_big_time_entry_path(big_time_entry) %></td>
+        <td><%= link_to 'Destroy', big_time_entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Big time entry', new_big_time_entry_path %>

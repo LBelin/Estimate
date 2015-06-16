@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @feature.title %>
+</p>
+
+<p>
+  <strong>Estimate:</strong>
+  <%= @feature.estimate %>
+</p>
+
+<p>
+  <strong>Actual:</strong>
+  <%= @feature.actual %>
+</p>
+
+<p>
+  <strong>Num cases:</strong>
+  <%= @feature.num_cases %>
+</p>
+
+<p>
+  <strong>Completed?:</strong>
+  <%= @feature.completed? %>
+</p>
+
+<p>
+  <strong>Active?:</strong>
+  <%= @feature.active? %>
+</p>
+
+<%= link_to 'Edit', edit_feature_path(@feature) %> |
+<%= link_to 'Back', features_path %>

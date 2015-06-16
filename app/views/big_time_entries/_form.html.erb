@@ -1,0 +1,37 @@
+<%= form_for(@big_time_entry) do |f| %>
+  <% if @big_time_entry.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@big_time_entry.errors.count, "error") %> prohibited this big_time_entry from being saved:</h2>
+
+      <ul>
+      <% @big_time_entry.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :Fogz %><br>
+    <%= f.number_field :Fogz %>
+  </div>
+  <div class="field">
+    <%= f.label :Resource %><br>
+    <%= f.text_field :Resource %>
+  </div>
+  <div class="field">
+    <%= f.label :HrsIn %><br>
+    <%= f.text_field :HrsIn %>
+  </div>
+  <div class="field">
+    <%= f.label :WorkDate %><br>
+    <%= f.datetime_select :WorkDate %>
+  </div>
+  <div class="field">
+    <%= f.label :nt %><br>
+    <%= f.text_area :nt %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

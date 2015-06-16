@@ -1,0 +1,35 @@
+<h1>Listing features</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Estimate</th>
+      <th>Actual</th>
+      <th>Num cases</th>
+      <th>Completed?</th>
+      <th>Active?</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @features.each do |feature| %>
+      <tr>
+        <td><%= feature.title %></td>
+        <td><%= feature.estimate %></td>
+        <td><%= feature.actual %></td>
+        <td><%= feature.num_cases %></td>
+        <td><%= feature.completed? %></td>
+        <td><%= feature.active? %></td>
+        <td><%= link_to 'Show', feature %></td>
+        <td><%= link_to 'Edit', edit_feature_path(feature) %></td>
+        <td><%= link_to 'Destroy', feature, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Feature', new_feature_path %>

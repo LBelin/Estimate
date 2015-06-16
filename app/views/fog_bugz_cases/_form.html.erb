@@ -1,0 +1,41 @@
+<%= form_for(@fog_bugz_case) do |f| %>
+  <% if @fog_bugz_case.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@fog_bugz_case.errors.count, "error") %> prohibited this fog_bugz_case from being saved:</h2>
+
+      <ul>
+      <% @fog_bugz_case.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :case_id %><br>
+    <%= f.number_field :case_id %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :estimated %><br>
+    <%= f.number_field :estimated %>
+  </div>
+  <div class="field">
+    <%= f.label :current %><br>
+    <%= f.text_field :current %>
+  </div>
+  <div class="field">
+    <%= f.label :person %><br>
+    <%= f.text_field :person %>
+  </div>
+  <div class="field">
+    <%= f.label :resolved? %><br>
+    <%= f.check_box :resolved? %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

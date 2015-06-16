@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Case:</strong>
+  <%= @fog_bugz_case.case_id %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @fog_bugz_case.title %>
+</p>
+
+<p>
+  <strong>Estimated:</strong>
+  <%= @fog_bugz_case.estimated %>
+</p>
+
+<p>
+  <strong>Current:</strong>
+  <%= @fog_bugz_case.current %>
+</p>
+
+<p>
+  <strong>Person:</strong>
+  <%= @fog_bugz_case.person %>
+</p>
+
+<p>
+  <strong>Resolved?:</strong>
+  <%= @fog_bugz_case.resolved? %>
+</p>
+
+<%= link_to 'Edit', edit_fog_bugz_case_path(@fog_bugz_case) %> |
+<%= link_to 'Back', fog_bugz_cases_path %>
