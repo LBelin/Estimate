@@ -1,12 +1,7 @@
 class Regex
 
-def resolved?(fogzStatus)
-  fogzStatus != 'Active'
-end
-
-def getTitle(FBIdAndTitle)
+def self.resolved?(fogzStatus)
 
 end
-
 
 end

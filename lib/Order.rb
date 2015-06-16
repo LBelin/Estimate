@@ -1,15 +1,15 @@
 class Order
 
 def self.worst(current)
-  current.each do |cases|
-    estimate =fogbugz_cases[0]
-    actual =fogbugz_cases[1]
+  current.each do |fbcase|
+    estimate = fbcase[0]
+    actual = fbcase[1]
 
     score = estimate - actual
-   fogbugz_cases[2] = score
+    fbcase[2] = score
   end
 
-  sorted_current = current.sort_by {|cases|fogbugz_cases[2]}
+  sorted_current = current.sort_by {|fbcase|fbcase[2]}
 end
 
 

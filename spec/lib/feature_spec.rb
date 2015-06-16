@@ -1,6 +1,7 @@
 require 'rails_helper'
 require 'Order'
 require 'Regex'
+require 'API'
 
 RSpec.describe Order do
   current = [[36,72],[100,110],[50,60],[20,15],[2,4],[10,8],[2,2],[10,3.4],[36,12]]
@@ -24,6 +25,12 @@ RSpec.describe Regex do
 
   it 'knows this case is active' do
     active_case = FogBugzCase.create!(resolved?:'Active')
-    expect(Regex.resolved?(resolved_case)).to be false
+    expect(Regex.resolved?(active_case)).to be false
+  end
+end
+
+RSpec.describe API do
+  it 'outputs information about the fogbugz case' do
+    expect(API.getAPIinfo(22456)).to eq('hello')
   end
 end
