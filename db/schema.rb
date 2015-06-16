@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150616134039) do
+ActiveRecord::Schema.define(version: 20150616165709) do
 
   create_table "big_time_entries", force: true do |t|
     t.integer  "Fogz"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20150616134039) do
     t.string   "Resource"
     t.decimal  "HrsIn"
     t.integer  "BudgetHrs"
-    t.string   "nt"
+    t.text     "nt",           limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
