@@ -1,6 +1,5 @@
 require 'rails_helper'
 require 'Order'
-require 'Regex'
 require 'API'
 
 RSpec.describe Order do
@@ -15,22 +14,12 @@ RSpec.describe Order do
     ordered = Order.best(current)
     expect(ordered).to eq(0)
   end
-end
-
-RSpec.describe Regex do
-  it 'knows this case is resolved' do
-    resolved_case = FogBugzCase.create!(resolved?:'Resolved (Implemented)')
-    expect(Regex.resolved?(resolved_case)).to be true
-  end
-
-  it 'knows this case is active' do
-    active_case = FogBugzCase.create!(resolved?:'Active')
-    expect(Regex.resolved?(active_case)).to be false
-  end
-end
 
 RSpec.describe API do
-  it 'outputs information about the fogbugz case' do
-    expect(API.getAPIinfo(22456)).to eq('hello')
+  it 'outputs the title of a case' do
+    # fbcase = API.getAPIinfo(22778)
+    # expect(fbcase).to eq('hello')
+    fbcase = API.new(22678)
+    expect(fbcase.title).to eq('hello')
   end
 end
