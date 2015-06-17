@@ -11,18 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150616165709) do
+ActiveRecord::Schema.define(version: 20150617194056) do
 
   create_table "big_time_entries", force: true do |t|
-    t.integer  "Fogz"
-    t.string   "FeatureName"
-    t.string   "FBIdAndTitle"
-    t.string   "FogzStatus"
+    t.integer  "fog_bugz_case_id"
     t.datetime "WorkDate"
-    t.string   "Resource"
-    t.decimal  "HrsIn"
-    t.integer  "BudgetHrs"
-    t.text     "nt",           limit: 255
+    t.string   "person"
+    t.decimal  "hours"
+    t.text     "comment",          limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
   end
