@@ -1,10 +1,10 @@
-<%= form_for(@feature) do |f| %>
-  <% if @feature.errors.any? %>
+<%= form_for(Feature.new) do |f| %>
+  <% if Feature.new.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@feature.errors.count, "error") %> prohibited this feature from being saved:</h2>
+      <h2><%= pluralize(Feature.new.errors.count, "error") %> prohibited this feature from being saved:</h2>
 
       <ul>
-      <% @feature.errors.full_messages.each do |message| %>
+      <% Feature.new.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
@@ -12,30 +12,9 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :estimate %><br>
-    <%= f.number_field :estimate %>
-  </div>
-  <div class="field">
-    <%= f.label :actual %><br>
-    <%= f.text_field :actual %>
-  </div>
-  <div class="field">
-    <%= f.label :num_cases %><br>
-    <%= f.number_field :num_cases %>
-  </div>
-  <div class="field">
-    <%= f.label :completed? %><br>
-    <%= f.check_box :completed? %>
-  </div>
-  <div class="field">
-    <%= f.label :active? %><br>
-    <%= f.check_box :active? %>
+    <%= f.text_field :title, autofocus:true %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Add"%>
   </div>
 <% end %>

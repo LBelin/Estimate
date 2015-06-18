@@ -5,11 +5,15 @@ class FeaturesController < ApplicationController
   # GET /features.json
   def index
     @features = Feature.all
+    @dashboard = Feature.all.where(params[active:true])
+
   end
 
   # GET /features/1
   # GET /features/1.json
   def show
+    @fog_bugz_case = FogBugzCase.new
+    @fog_bugz_cases = FogBugzCase.all
   end
 
   # GET /features/new
@@ -24,7 +28,10 @@ class FeaturesController < ApplicationController
   # POST /features
   # POST /features.json
   def create
-    @feature = Feature.new(feature_params)
+    @feature = Feature.new(
+      title: 'Hello',
+      estimate: params[:title]
+    )
 
     respond_to do |format|
       if @feature.save
@@ -54,6 +61,7 @@ class FeaturesController < ApplicationController
   # DELETE /features/1
   # DELETE /features/1.json
   def destroy
+    @feature = Feature.find(params[:id])
     @feature.destroy
     respond_to do |format|
       format.html { redirect_to features_url, notice: 'Feature was successfully destroyed.' }

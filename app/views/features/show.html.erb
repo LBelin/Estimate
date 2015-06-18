@@ -1,34 +1,65 @@
-<p id="notice"><%= notice %></p>
+<center>
+<h1><%=@feature.title%></h1>
 
-<p>
-  <strong>Title:</strong>
-  <%= @feature.title %>
-</p>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Estimated Time (hours)</th>
+      <th>Current Time (hours)</th>
+      <th>Number of Cases</th>
+      <th>Completed?</th>
+      <th>Percentage</th>
+      <th>Active?</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
-<p>
-  <strong>Estimate:</strong>
-  <%= @feature.estimate %>
-</p>
+  <tbody>
+    <% f = @feature %>
+      <tr>
+        <td><%= f.title %></td>
+        <td><%= f.estimate %></td>
+        <td><%= f.actual %></td>
+        <td><%= f.num_cases %></td>
+        <td><%= f.completed? %></td>
+        <td><%= 'Percentage!' %></td>
+        <td><%= f.active? %></td>
+      </tr>
+  </tbody>
+</table>
 
-<p>
-  <strong>Actual:</strong>
-  <%= @feature.actual %>
-</p>
+<table>
+  <thead>
+    <tr>
+      <th>Case</th>
+      <th>Title</th>
+      <th>Estimated Time (hours)</th>
+      <th>Current Time (hours)</th>
+      <th>Person</th>
+      <th>Resolved?</th>
+      <th>Percentage</th>
+      <th>Remove from Feature</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
 
-<p>
-  <strong>Num cases:</strong>
-  <%= @feature.num_cases %>
-</p>
+  <tbody>
+    <% @fog_bugz_cases.each do |fb| %>
+      <tr>
+        <td><%= link_to fb.case_id, :action=>"show", :controller=>"fog_bugz_cases", :id=>fb.case_id.to_i %></td>
+        <td><%= fb.title %></td>
+        <td><%= fb.estimated %></td>
+        <td><%= fb.current %></td>
+        <td><%= fb.person %></td>
+        <td><%= fb.resolved? %></td>
+        <td><%= 'Percentage!' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
 
-<p>
-  <strong>Completed?:</strong>
-  <%= @feature.completed? %>
-</p>
+Enter FogBugz id to associate with feature:<%= render partial: '/fog_bugz_cases/form' %>
 
-<p>
-  <strong>Active?:</strong>
-  <%= @feature.active? %>
-</p>
-
-<%= link_to 'Edit', edit_feature_path(@feature) %> |
-<%= link_to 'Back', features_path %>
+</center>

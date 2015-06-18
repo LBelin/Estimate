@@ -12,30 +12,8 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :case_id %><br>
-    <%= f.number_field :case_id %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :estimated %><br>
-    <%= f.number_field :estimated %>
-  </div>
-  <div class="field">
-    <%= f.label :current %><br>
-    <%= f.text_field :current %>
-  </div>
-  <div class="field">
-    <%= f.label :person %><br>
-    <%= f.text_field :person %>
-  </div>
-  <div class="field">
-    <%= f.label :resolved? %><br>
-    <%= f.check_box :resolved? %>
-  </div>
+    <%= f.text_field :case_id, autofocus:true %>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Associate'%>
   </div>
 <% end %>

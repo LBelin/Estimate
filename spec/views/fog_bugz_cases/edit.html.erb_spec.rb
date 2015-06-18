@@ -15,7 +15,7 @@ RSpec.describe "fog_bugz_cases/edit", type: :view do
   it "renders the edit fog_bugz_case form" do
     render
 
-    assert_select "form[action=?][method=?]", fog_bugz_case_path(@fog_bugz_case), "post" do
+    assert_select "form[action=?][method=?]", feature_fog_bugz_case_path(@fog_bugz_case), "post" do
 
       assert_select "input#fog_bugz_case_case_id[name=?]", "fog_bugz_case[case_id]"
 

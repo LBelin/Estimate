@@ -10,6 +10,9 @@ class FogBugzCasesController < ApplicationController
   # GET /fog_bugz_cases/1
   # GET /fog_bugz_cases/1.json
   def show
+    # @feature_title = Feature.find(@fog_bugz_case.feature_id).title
+    @fog_bugz_case = FogBugzCase.find(params[:id])
+    @big_time_entries = BigTimeEntry.all
   end
 
   # GET /fog_bugz_cases/new
@@ -24,11 +27,15 @@ class FogBugzCasesController < ApplicationController
   # POST /fog_bugz_cases
   # POST /fog_bugz_cases.json
   def create
-    @fog_bugz_case = FogBugzCase.new(fog_bugz_case_params)
+    @fog_bugz_case = FogBugzCase.new(
+      case_id: params[:case_id],
+      estimated: 7
+    )
+    @fog_bugz_case.feature_id = params[:id]
 
     respond_to do |format|
       if @fog_bugz_case.save
-        format.html { redirect_to @fog_bugz_case, notice: 'Fog bugz case was successfully created.' }
+        format.html { redirect_to features_path(12), notice: 'Fog bugz case was successfully created.' }
         format.json { render :show, status: :created, location: @fog_bugz_case }
       else
         format.html { render :new }
@@ -56,7 +63,7 @@ class FogBugzCasesController < ApplicationController
   def destroy
     @fog_bugz_case.destroy
     respond_to do |format|
-      format.html { redirect_to fog_bugz_cases_url, notice: 'Fog bugz case was successfully destroyed.' }
+      format.html { redirect_to feature(params[:id]), notice: 'Fog bugz case was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

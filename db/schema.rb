@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150617194056) do
+ActiveRecord::Schema.define(version: 20150618155517) do
 
   create_table "big_time_entries", force: true do |t|
     t.integer  "fog_bugz_case_id"
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20150617194056) do
     t.boolean  "resolved?"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "feature_id"
   end
 
 end
