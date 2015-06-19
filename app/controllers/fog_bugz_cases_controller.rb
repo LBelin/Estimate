@@ -30,12 +30,10 @@ class FogBugzCasesController < ApplicationController
   # POST /fog_bugz_cases
   # POST /fog_bugz_cases.json
   def create
-    case_id = params[:fog_bugz_case][:case_id]
-    # feature_id = params[:features][:id]
 
     c = FogBugzCase.new
-    c.case_id = case_id
-    # c.feature_id = feature_id
+    c.case_id = params[:fog_bugz_case][:case_id]
+    c.feature_id = param[:fog_bugz_case][:feature_id]
     # c.feature_title = Feature.find(feature_id).title
     c.title = 'title' #API.title(case_id)
     c.estimate = 0 #API.estimate(case_id)

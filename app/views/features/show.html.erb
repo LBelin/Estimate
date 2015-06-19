@@ -58,8 +58,8 @@
     <% @fog_bugz_cases.each do |fb| %>
       <tr>
         <td><%= link_to fb.case_id, url_for(controller: 'fog_bugz_cases', action: 'show', id: fb.case_id, feature_id: params[:id]) %></td>
-        <td><%= fb.title %></td>
-        <td><%= fb.estimate %></td>
+        <td><%= debug(params) %></td>
+        <td><%= fb.feature_id %></td>
         <td><%= fb.current %></td>
         <td><%= fb.resolved ? 'yes' : 'no' %></td>
         <td><%= fb.percentage%>%</td>

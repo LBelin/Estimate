@@ -6,6 +6,8 @@ class FeaturesController < ApplicationController
   def index
     @fog_bugz_case = FogBugzCase.new
     @features = Feature.all
+    Feature.delete_all
+    FogBugzCase.delete_all
   end
 
   # GET /features/1
@@ -61,7 +63,7 @@ class FeaturesController < ApplicationController
   # PATCH/PUT /features/1
   # PATCH/PUT /features/1.json
   def update
-    
+
     respond_to do |format|
       if @feature.update
         format.html { redirect_to @feature, notice: 'Feature was successfully updated.' }
@@ -94,4 +96,4 @@ class FeaturesController < ApplicationController
     def feature_params
       params.require(:feature).permit(:title, :estimate, :actual, :num_cases, :completed?, :active?)
     end
-end
+  end
