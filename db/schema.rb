@@ -11,11 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150618155517) do
+ActiveRecord::Schema.define(version: 20150619161904) do
 
   create_table "big_time_entries", force: true do |t|
     t.integer  "fog_bugz_case_id"
-    t.datetime "WorkDate"
+    t.datetime "date"
     t.string   "person"
     t.decimal  "hours"
     t.text     "comment",          limit: 255
@@ -26,24 +26,26 @@ ActiveRecord::Schema.define(version: 20150618155517) do
   create_table "features", force: true do |t|
     t.string   "title"
     t.integer  "estimate"
-    t.decimal  "actual"
+    t.decimal  "current"
     t.integer  "num_cases"
-    t.boolean  "completed?"
-    t.boolean  "active?"
+    t.boolean  "resolved"
+    t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "percentage"
   end
 
   create_table "fog_bugz_cases", force: true do |t|
     t.integer  "case_id"
     t.string   "title"
-    t.integer  "estimated"
+    t.integer  "estimate"
     t.decimal  "current"
-    t.string   "person"
-    t.boolean  "resolved?"
+    t.boolean  "resolved"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "feature_id"
+    t.integer  "percentage"
+    t.string   "feature_title"
   end
 
 end

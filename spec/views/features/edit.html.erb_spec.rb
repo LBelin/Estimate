@@ -7,8 +7,6 @@ RSpec.describe "features/edit", type: :view do
       :estimate => 1,
       :actual => "9.99",
       :num_cases => 1,
-      :completed? => false,
-      :active? => false
     ))
   end
 

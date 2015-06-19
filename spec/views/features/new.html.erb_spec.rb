@@ -7,8 +7,6 @@ RSpec.describe "features/new", type: :view do
       :estimate => 1,
       :actual => "9.99",
       :num_cases => 1,
-      :completed? => false,
-      :active? => false
     ))
   end
 
@@ -25,7 +23,7 @@ RSpec.describe "features/new", type: :view do
 
       assert_select "input#feature_num_cases[name=?]", "feature[num_cases]"
 
-      assert_select "input#feature_completed?[name=?]", "feature[completed?]"
+      assert_select "input#feature_resolved[name=?]", "feature[resolved]"
 
       assert_select "input#feature_active?[name=?]", "feature[active?]"
     end
