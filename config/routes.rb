@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
-  resources :features
-  resources :fog_bugz_cases 
+  resources :features do
+    resources :fog_bugz_cases
+  end
 
-
+  root 'features#index'
 end
 
   # The priority is based upon order of creation: first created -> highest priority.
