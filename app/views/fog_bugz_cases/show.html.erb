@@ -1,16 +1,17 @@
-<h1><center><u>History of Fogbugz ID <%=@fog_bugz_case.case_id%>:<%@fog_bugz_case.title%></center></u></h1>
+<center>
 
-<table>
+<h1><u>History of Fogbugz ID <%=@fog_bugz_case.case_id%>: <%=@fog_bugz_case.title%></u></h1>
+
+<table class = 'background-color'>
   <thead>
     <tr>
       <th>id</th>
       <th>Title</th>
       <th>Feature</th>
-      <th>Estimated Time (hours)</th>
-      <th>Current Time (hours)</th>
+      <th>Estimated<br>Time<br>(hours)</th>
+      <th>Current<br>Time<br>(hours)</th>
       <th>Resolved?</th>
       <th>Percentage</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
 
@@ -20,13 +21,15 @@
         <td><%=fb.case_id%></td>
         <td><%=fb.title%></td>
         <td><%=fb.feature_id%></td>
-        <td><%=fb.estimated%></td>
+        <td><%=fb.estimate%></td>
         <td><%=fb.current%></td>
-        <td><%=fb.resolved?%></td>
-        <td><%='fb.current/fb.estimated'%></td>
+        <td><%=fb.resolved ? 'yes' : 'no'%></td>
+        <td><%=fb.percentage%>%</td>
       </tr>
   </tbody>
 </table>
+
+<br><br><br>
 
 <table>
   <thead>
@@ -35,7 +38,6 @@
       <th>Hours Spent</th>
       <th>Date</th>
       <th>Note</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
 
@@ -44,11 +46,11 @@
       <tr>
         <td><%= big_time_entry.person %></td>
         <td><%= big_time_entry.hours %></td>
-        <td><%= big_time_entry.WorkDate %></td>
+        <td><%= big_time_entry.date %></td>
         <td><%= big_time_entry.comment %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
+</center>

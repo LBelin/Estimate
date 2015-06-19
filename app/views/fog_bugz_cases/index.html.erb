@@ -1,0 +1,65 @@
+<center>
+<h1><%=@feature.title%></h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Estimated<br>Time<br>(hours)</th>
+      <th>Current<br>Time<br>(hours)</th>
+      <th>Number<br>of<br>Cases</th>
+      <th>Resolved?</th>
+      <th>Percentage</th>
+      <th>Active?</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% f = @feature %>
+      <tr>
+        <td><%= f.title %></td>
+        <td><%= f.estimate %></td>
+        <td><%= f.current %></td>
+        <td><%= f.num_cases %></td>
+        <td><%= f.resolved %></td>
+        <td><%= f.percentage %></td>
+        <td><%= f.active %></td>
+      </tr>
+  </tbody>
+</table>
+
+<br><br><br>
+
+<table>
+  <thead>
+    <tr>
+      <th>Case</th>
+      <th>Title</th>
+      <th>Estimated<br>Time<br>(hours)</th>
+      <th>Current<br>Time<br>(hours)</th>
+      <th>Resolved?</th>
+      <th>Percentage</th>
+      <th>Remove<br>from<br>Feature</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @fog_bugz_cases.each do |fb| %>
+      <tr>
+        <td><%= link_to fb.case_id, feature_fog_bugz_cases_path(params[:id]) %></td>
+        <td><%= fb.title %></td>
+        <td><%= fb.estimate %></td>
+        <td><%= fb.current %></td>
+        <td><%= fb.resolved ? 'yes' : 'no' %></td>
+        <td><%= fb.percentage%>%</td>
+        <td> <%= link_to 'Remove', feature_fog_bugz_cases_path(@feature, @fog_bugz_case), :method=>:delete %> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br><br><br>
+
+Enter FogBugz id to associate with feature:<%= render partial: '/fog_bugz_cases/form' %>
+
+</center>

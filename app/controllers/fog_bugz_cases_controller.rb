@@ -4,15 +4,18 @@ class FogBugzCasesController < ApplicationController
   # GET /fog_bugz_cases
   # GET /fog_bugz_cases.json
   def index
-    @fog_bugz_cases = FogBugzCase.all
+    @fog_bugz_case = FogBugzCase.new
+
+    this_feature = Feature.find(params[:feature_id])
+    @fog_bugz_cases = this_feature.fog_bugz_cases
+    @feature = this_feature
   end
 
   # GET /fog_bugz_cases/1
   # GET /fog_bugz_cases/1.json
   def show
-    # @feature_title = Feature.find(@fog_bugz_case.feature_id).title
     @fog_bugz_case = FogBugzCase.find(params[:id])
-    @big_time_entries = BigTimeEntry.all
+    @big_time_entries = BigTimeEntry.all.where(:fog_bugz_case_id==params[:id])
   end
 
   # GET /fog_bugz_cases/new
@@ -27,18 +30,26 @@ class FogBugzCasesController < ApplicationController
   # POST /fog_bugz_cases
   # POST /fog_bugz_cases.json
   def create
-    @fog_bugz_case = FogBugzCase.new(
-      case_id: params[:case_id],
-      estimated: 7
-    )
-    @fog_bugz_case.feature_id = params[:id]
+    case_id = params[:fog_bugz_case][:case_id]
+    # feature_id = params[:features][:id]
+
+    c = FogBugzCase.new
+    c.case_id = case_id
+    # c.feature_id = feature_id
+    # c.feature_title = Feature.find(feature_id).title
+    c.title = 'title' #API.title(case_id)
+    c.estimate = 0 #API.estimate(case_id)
+    c.current = 0 #BigTime adder
+    c.percentage = c.estimate == 0 ? 0 : c.current/c.estimate
+
+    @fog_bugz_case = c
 
     respond_to do |format|
       if @fog_bugz_case.save
-        format.html { redirect_to features_path(12), notice: 'Fog bugz case was successfully created.' }
+        format.html { redirect_to :back, notice: 'Fog bugz case was successfully created.' }
         format.json { render :show, status: :created, location: @fog_bugz_case }
       else
-        format.html { render :new }
+        format.html { render :back }
         format.json { render json: @fog_bugz_case.errors, status: :unprocessable_entity }
       end
     end
@@ -61,9 +72,11 @@ class FogBugzCasesController < ApplicationController
   # DELETE /fog_bugz_cases/1
   # DELETE /fog_bugz_cases/1.json
   def destroy
+    @feature = Feature.find(params[:feature_id])
+    @fog_bugz_case = FogBugzCase.find(params[:id])
     @fog_bugz_case.destroy
     respond_to do |format|
-      format.html { redirect_to feature(params[:id]), notice: 'Fog bugz case was successfully destroyed.' }
+      format.html { redirect_to :back, notice: 'Fog bugz case was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

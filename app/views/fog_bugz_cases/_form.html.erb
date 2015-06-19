@@ -1,4 +1,4 @@
-<%= form_for(@fog_bugz_case) do |f| %>
+<%= form_for [@feature, @fog_bugz_case] do |f| %>
   <% if @fog_bugz_case.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@fog_bugz_case.errors.count, "error") %> prohibited this fog_bugz_case from being saved:</h2>

@@ -4,9 +4,8 @@ class FeaturesController < ApplicationController
   # GET /features
   # GET /features.json
   def index
+    @fog_bugz_case = FogBugzCase.new
     @features = Feature.all
-    @dashboard = Feature.all.where(params[active:true])
-
   end
 
   # GET /features/1
@@ -28,10 +27,13 @@ class FeaturesController < ApplicationController
   # POST /features
   # POST /features.json
   def create
-    @feature = Feature.new(
-      title: 'Hello',
-      estimate: params[:title]
-    )
+    f = Feature.new
+    f.title = params[:feature][:title]
+    f.estimate = 0
+    f.current = 0
+    f.num_cases = 0
+    f.percentage = f.estimate == 0 ? 0 : f.current/f.estimate
+    @feature = f
 
     respond_to do |format|
       if @feature.save
@@ -78,5 +80,6 @@ class FeaturesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def feature_params
       params.require(:feature).permit(:title, :estimate, :actual, :num_cases, :completed?, :active?)
+      params[:estimate] = 8
     end
 end

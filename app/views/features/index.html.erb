@@ -1,29 +1,31 @@
 <center>
-<h1>Listing features</h1>
+<h1><u>Features</u></h1>
 
 <table>
   <thead>
     <tr>
       <th>Title</th>
-      <th>Estimate</th>
-      <th>Actual</th>
-      <th>Num cases</th>
-      <th>Completed?</th>
+      <th>Date Added</th>
+      <th>Estimated<br>Time<br>(hours)</th>
+      <th>Actual<br>Time<br>(hours)</th>
+      <th>Number<br>of<br> cases</th>
+      <th>Resolved?</th>
       <th>Percentage</th>
       <th>Active?</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
+    <!-- <% if Feature.all.count == 0%><tr></tr><%end%> Blank row if empty?-->
     <% @features.each do |feature| %>
       <tr>
         <td><%= link_to feature.title, feature %></td>
+        <td><%= feature.created_at.strftime('%m-%d-%Y') %> </td>
         <td><%= feature.estimate %></td>
-        <td><%= feature.actual %></td>
+        <td><%= feature.current %></td>
         <td><%= feature.num_cases %></td>
-        <td><%= feature.completed? %></td>
-        <td> Calc Percentage </td>
+        <td><%= feature.resolved %></td>
+        <td><%= feature.percentage%>%</td>
         <td><%= feature.active? %></td>
       </tr>
     <% end %>
