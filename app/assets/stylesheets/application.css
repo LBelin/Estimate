@@ -13,3 +13,21 @@
  *= require_tree .
  *= require_self
  */
+
+table{
+  background-color: black;
+}
+
+thead, th {
+     background-color: gray;
+   }
+
+tr:nth-child(odd)		{ background-color:whitesmoke; }
+tr:nth-child(even)	{ background-color:lightyellow; }
+
+html, body, center {
+    margin: 0px;
+    width: auto;
+    height: 2000px;
+    background-color: mediumturquoise;
+}
