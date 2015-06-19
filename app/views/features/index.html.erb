@@ -9,8 +9,8 @@
       <th>Estimated<br>Time<br>(hours)</th>
       <th>Actual<br>Time<br>(hours)</th>
       <th>Number<br>of<br> cases</th>
-      <th>Resolved?</th>
       <th>Percentage</th>
+      <th>Resolved?</th>
       <th>Active?</th>
     </tr>
   </thead>
@@ -24,9 +24,20 @@
         <td><%= feature.estimate %></td>
         <td><%= feature.current %></td>
         <td><%= feature.num_cases %></td>
-        <td><%= feature.resolved %></td>
         <td><%= feature.percentage%>%</td>
-        <td><%= feature.active? %></td>
+
+      <% if feature.resolved %>
+        <td><%= link_to 'Unresolve', edit_feature_path(id:feature.id, resolved:false) %></td>
+      <%else%>
+        <td><%= link_to 'Resolve', edit_feature_path(id:feature.id, resolved:true) %></td>
+      <%end%>
+
+      <% if feature.active %>
+        <td><%= link_to 'Deactivate', edit_feature_path(id:feature.id, active:false) %></td>
+      <%else%>
+        <td><%= link_to 'Activate', edit_feature_path(id:feature.id, active:true) %></td>
+      <%end%>
+
       </tr>
     <% end %>
   </tbody>

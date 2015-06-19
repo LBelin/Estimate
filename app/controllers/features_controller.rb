@@ -22,6 +22,18 @@ class FeaturesController < ApplicationController
 
   # GET /features/1/edit
   def edit
+    feature = Feature.find(params[:id])
+    feature.active = params[:active]
+    feature.resolved = params[:resolved]
+    respond_to do |format|
+      if feature.save
+        format.html { redirect_to :back, notice: 'Feature was successfully edited.' }
+        format.json { render :show, status: :created, location: feature }
+      else
+        format.html { render :new }
+        format.json { render json: feature.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   # POST /features
@@ -49,8 +61,9 @@ class FeaturesController < ApplicationController
   # PATCH/PUT /features/1
   # PATCH/PUT /features/1.json
   def update
+    
     respond_to do |format|
-      if @feature.update(feature_params)
+      if @feature.update
         format.html { redirect_to @feature, notice: 'Feature was successfully updated.' }
         format.json { render :show, status: :ok, location: @feature }
       else
@@ -80,6 +93,5 @@ class FeaturesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def feature_params
       params.require(:feature).permit(:title, :estimate, :actual, :num_cases, :completed?, :active?)
-      params[:estimate] = 8
     end
 end
